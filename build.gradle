@@ -1,0 +1,19 @@
+plugins {
+	id 'java'
+	id 'dev.nokee.jni-library'
+	id 'dev.nokee.cpp-language'
+}
+
+group 'uk.co.lunalux'
+version '0.1.1'
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+task runApp(type: JavaExec) {
+    dependsOn("assemble")
+    classpath = sourceSets.main.runtimeClasspath + files('./build/libs/main')
+    mainClass =  'uk.co.lunalux.tests.Main'
+    jvmArgs = jvmArgs + "-Xdebug"
+}
+
