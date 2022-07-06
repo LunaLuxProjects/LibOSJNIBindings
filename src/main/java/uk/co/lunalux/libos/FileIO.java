@@ -16,19 +16,10 @@ public class FileIO extends Defines
     public static final int LOS_FILE_BIT_DELETE_AFTER_CLOSE = 0x016;
     public static final int LOS_FILE_BIT_FLIP_ENDIEN = 0x032;
 
-    public class fileResult
-    {
-        losResult losResult;
-        String value;
-    }
-
     public native void setAssetPath(String path);
     public losResult getCurrentResult() {return losResult.valueOf(n_getCurrentResult(file_id));}
     public void openFile(int fileBits, String path) {file_id = n_openFile(fileBits, path);}
-    public String readFile()
-    {
-        return n_readFile(file_id);
-    }
+    public String readFile(){return n_readFile(file_id);}
     public void writeFile(String data) {n_writeFile(file_id,data);}
     public void closeFile(){n_closeFile(file_id);}
 }
